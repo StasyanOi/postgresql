@@ -459,7 +459,9 @@ CREATE TABLE indexes_test_table (
 DROP TABLE indexes_test_table;
 
 INSERT INTO indexes_test_table (id, val1, val2, val3, val4, val5, val6)
-SELECT g.id, 'test', 'test', 'test', 'test', 'test', 'test' FROM generate_series(1, 3000000) AS g (id) ;
+``
+-- TYPE CASTING EXAMPLE
+SELECT g.id, cast((g.id + g.id) as varchar), 'test', 'test', 'test', 'test', 'test' FROM generate_series(1, 3000000) AS g (id) ;
 
 EXPLAIN DELETE FROM indexes_test_table WHERE id = 2444442;
 
